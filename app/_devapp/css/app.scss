@@ -1,0 +1,21 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    padding: 0;
+    margin: 0;
+}
+
+@import "Header";
+@import "bootstrap/bootstrap";
+
+.dashboard {
+    padding: 0 40px;
+}
+
+.status {
+    color: red;
+}
+
