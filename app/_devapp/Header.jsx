@@ -13,12 +13,10 @@ import { render } from 'react-dom';
 const navStyle = {
     backgroundColor: '#e3f2fd',
 }
-const navInnerStyle = {
-    backgroundColor: 'white',
 
-}
 const navlogoStyle = {
     height: '30px',
+
 }
 
 
@@ -29,8 +27,8 @@ export default class Header extends Component {
             <Navbar expand="lg" className="header" style={navStyle}>
                 <Navbar.Brand href="#home"><b.Image src={navlogo} style={navlogoStyle}/></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav" style={navInnerStyle}>
-                    <Nav className="mr-auto">
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="ml-auto">
                         <Nav.Link href="#home">Home</Nav.Link>
                         <Nav.Link href="#link">Link</Nav.Link>
                         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
