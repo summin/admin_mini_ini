@@ -18,7 +18,7 @@ let config = {
 
     output: {
         path: path.resolve(__dirname, 'assets', 'bundle'),
-        filename: '[name].bundle.js'
+        filename: '[name].bundle.js?t=' + new Date().getTime()
     },
 
     devServer: {
@@ -93,6 +93,7 @@ let config = {
             '__DEV__': JSON.stringify(true),
             '__API_HOST__': JSON.stringify('http://localhost/my-app/'),
         }),
+        
     ],
 
 };

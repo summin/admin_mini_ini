@@ -1,4 +1,20 @@
-# php-react-mini-backend
+# mini-ini-backend
+
+A project that will help to manage backend ini files configuration and organise the workflowof a project, where backend uses ini config files to store data. The code can be used and manipulated to connect to relational or no sql databases. 
+
+## Getting Started
+
+Download or clone the project and follow the instructions below
+
+### Prerequisites
+
+PHP and MySQL enabled server. React.js
+
+### Configuration
+
+
+
+### Installing
 
 1. Install Apache with PHP, Node.js and npm to your computer/server
 
@@ -14,3 +30,4 @@
     if the webpack-dev-server generates error you may need to erase it from ./node_modules and reinstall as npm install webpack-dev-server from being in /app folder
 
 5. 
+

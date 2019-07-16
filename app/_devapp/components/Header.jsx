@@ -6,32 +6,29 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
-import navlogo from '../../../dist/assets/images/logo-horizontal.png';
+import navlogo from '../../../../dist/assets/images/logo-horizontal.png';
+import Clock from './Clock';
 import { render } from 'react-dom';
-
 
 const navStyle = {
     backgroundColor: '#e3f2fd',
 }
-const navInnerStyle = {
-    backgroundColor: 'white',
 
-}
 const navlogoStyle = {
     height: '30px',
 }
 
-
-
 export default class Header extends Component {
     render() {
-        return ( 
+        return (
             <Navbar expand="lg" className="header" style={navStyle}>
-                <Navbar.Brand href="#home"><b.Image src={navlogo} style={navlogoStyle}/></Navbar.Brand>
+                <Navbar.Brand href="#home"><b.Image src={navlogo} style={navlogoStyle} /></Navbar.Brand>
+                <Navbar.Brand><Clock /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav" style={navInnerStyle}>
-                    <Nav className="mr-auto">
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="ml-auto">
                         <Nav.Link href="#home">Home</Nav.Link>
+                        <Nav.Link href="#assets" onClick={this.onClick}>Assets</Nav.Link>
                         <Nav.Link href="#link">Link</Nav.Link>
                         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -45,6 +42,7 @@ export default class Header extends Component {
                         <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                         <Button variant="outline-success">Search</Button>
                     </Form>
+
                 </Navbar.Collapse>
             </Navbar>
         )

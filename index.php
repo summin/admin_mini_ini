@@ -1,18 +1,7 @@
 <?php 
-$rel_path_prefix = "http://localhost/AC19";
-$admin_url = $rel_path_prefix . "/admin";
-
-// cache busting used to disable browser caching of css and js. assign "" empty to the variable to stop cache busting
-$dev_cache_bust = "?".time(); 
-
-
-$user = (object) [
-    'name' => 'AC19user1',
-    'email' => 'AC19user1@gmail.com',
-    'logged' => true
-];
-
+require './php/config.php';
 ?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -24,19 +13,15 @@ $user = (object) [
     </head>
     <script type="text/javascript">
         var STATIC_URL = "<?php echo $admin_url; ?>";
+        var STATIC_PARENT_URL = "<?php $rel_path_prefix; ?>";
         var myApp = {
-            user : <?php echo json_encode($user); ?>,
-            logged : <?php echo $user->logged; ?>
+            user : <?php echo(json_encode($user)); ?>,
+            logged : <?php var_export($user->logged); ?>
         };
     </script>
     <body>
-
         <div id="app"></div>
-        <div id="clock"></div>
-
-        <script type="text/javascript" src="<?php echo $rel_path_prefix ?>/admin/app/assets/bundle/main.bundle.js<?php echo $dev_cache_bust ?>">
-        </script>
-        <script> console.log("1");
+        <script type="text/javascript" src="http://localhost:8080/assets/bundle/main.bundle.js<?php echo $dev_cache_bust ?>">
         </script>
 
     </body>
