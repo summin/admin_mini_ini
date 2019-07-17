@@ -8,17 +8,22 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Result from './components/Result'
 
+var text = "blank for now";
 
 class MyApp extends Component {
+
+    state = {
+        text: "blank for now",
+    }
+
     render() {
         const { user : { name, email }, logged } = myApp;
         
-
         return (
             <Fragment>
                 <Header/>
                 <Result 
-                    name="Alex"/>
+                    text = {this.state.text}/>
                 <Footer/>
                 <div className="dashboard">
                 

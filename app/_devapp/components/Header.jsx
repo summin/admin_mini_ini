@@ -9,6 +9,8 @@ import Button from 'react-bootstrap/Button'
 import navlogo from '../../../../dist/assets/images/logo-horizontal.png';
 import Clock from './Clock';
 import { render } from 'react-dom';
+import Result from './Result'
+
 
 const navStyle = {
     backgroundColor: '#e3f2fd',
@@ -19,6 +21,13 @@ const navlogoStyle = {
 }
 
 export default class Header extends Component {
+
+ 
+    onClick() {
+        <Result text="Martina Received props"/>;
+        console.log(MyApp.state.text);
+    }
+
     render() {
         return (
             <Navbar expand="lg" className="header" style={navStyle}>
@@ -44,6 +53,7 @@ export default class Header extends Component {
                     </Form>
 
                 </Navbar.Collapse>
+
             </Navbar>
         )
     }
