@@ -8,12 +8,17 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Result from './components/Result'
 
-var text = "blank for now";
+
 
 class MyApp extends Component {
-
+    
     state = {
-        text: "blank for now",
+        text: "blank for now1",
+        
+    }
+
+    onClick = () => {
+        console.log (this.state.text);
     }
 
     render() {
@@ -21,7 +26,7 @@ class MyApp extends Component {
         
         return (
             <Fragment>
-                <Header/>
+                <Header setState = {p => {this.setState(p)}}/>
                 <Result 
                     text = {this.state.text}/>
                 <Footer/>
@@ -43,3 +48,4 @@ class MyApp extends Component {
 
 
 render(<MyApp/>, document.getElementById('app'));
+

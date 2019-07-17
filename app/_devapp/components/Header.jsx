@@ -10,6 +10,7 @@ import navlogo from '../../../../dist/assets/images/logo-horizontal.png';
 import Clock from './Clock';
 import { render } from 'react-dom';
 import Result from './Result'
+import {text} from '../app'
 
 
 const navStyle = {
@@ -22,22 +23,30 @@ const navlogoStyle = {
 
 export default class Header extends Component {
 
- 
+    state = {
+        homey: "What Homey?"
+    }
+
+
+
     onClick() {
-        <Result text="Martina Received props"/>;
-        console.log(MyApp.state.text);
+        this.props.setState({text: "That Homey!"})
     }
 
     render() {
+        const returned = this.state.homey
+        returned
         return (
+
             <Navbar expand="lg" className="header" style={navStyle}>
                 <Navbar.Brand href="#home"><b.Image src={navlogo} style={navlogoStyle} /></Navbar.Brand>
                 <Navbar.Brand><Clock /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#assets" onClick={this.onClick}>Assets</Nav.Link>
+                        <Nav.Link href="#home">{this.state.homey}</Nav.Link>
+                        <Nav.Link href="#home">{this.props.homey}</Nav.Link>
+                        <Nav.Link href="#assets" onClick={this.onClick.bind(this)}>Assets</Nav.Link>
                         <Nav.Link href="#link">Link</Nav.Link>
                         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
