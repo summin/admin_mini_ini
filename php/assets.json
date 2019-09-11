@@ -1,10 +1,15 @@
 {
-    "1": {
-        "path": "config/pub/calendar/days.ini",
-        "name": "Days"
-    },
-    "2": {
-        "path": "config/pub/calendar/overlay.ini",
-        "name": "Days"
-    }
+    "days": "config/pub/calendar/days.ini",
+    "overlay" : "config/pub/calendar/overlay.ini",
+    "rows" : "config/pub/calendar/rows.ini",
+    "teasers" : "config/pub/calendar/teasers.ini",
+    "calendar" : "config/pub/calendar.ini",
+    "config" : "config/pub/config.ini",
+    "content" : "config/pub/content.ini",
+    "countdown" : "config/pub/countdown.ini",
+    "header" : "config/pub/header.ini",
+    "reminder" : "config/pub/reminder.ini",
+    "seo" : "config/pub/seo.ini",
+    "thanks" : "config/pub/thanks.ini"
+        
 }

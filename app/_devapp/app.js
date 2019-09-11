@@ -1,51 +1,69 @@
+// REACT
 import React, { Component, Fragment } from 'react';
 import { render } from 'react-dom';
-import { asyncComponent } from 'react-async-component';
-import myApp from 'myApp'; /** We are importing our index.php my app Vairaible */
-__webpack_public_path__ = `${window.STATIC_URL}/app/assets/bundle/`; /* globals __webpack_public_path__ */
 
+// REDUX
+import { renderApp } from './actions'
+import { connect } from 'react-redux'
+import { createLogger } from 'redux-logger'
+import reducer from './reducers'
+
+// CHILDREN
 import Header from './components/Header'
 import Footer from './components/Footer'
-import Result from './components/Result'
+import ContentContainer from './components/ContentContainer'
+
+// ENVIRONMENT
+__webpack_public_path__ = `${window.STATIC_URL}/app/assets/bundle/`; /* globals __webpack_public_path__ */
+
+//// APP
 
 
 
 class MyApp extends Component {
-    
-    state = {
-        text: "blank for now1",
-        
+
+    constructor(props) {
+        super(props)
+        this.handler = this.handler.bind(this)
     }
 
-    onClick = () => {
-        console.log (this.state.text);
+    handler = (data) => {
+        this.data = this.data
+            .updateIn(['header', 'loaded'], (value) => value = data.currentTarget.innerHTML)
+            .updateIn(['contentContainer', 'content'], (value) => value = [data.currentTarget.innerHTML])
+            .updateIn(['footer', 'loaded'], (value) => value = data.currentTarget.innerHTML);
     }
+
+
 
     render() {
-        const { user : { name, email }, logged } = myApp;
+        console.log("MyAPP RENDERED");
         
+        const {
+            testing,
+            header,
+            contentContainer,
+            footer } = this.props.props;
+         
+        console.log(this.props.props);
+
         return (
             <Fragment>
-                <Header setState = {p => {this.setState(p)}}/>
-                <Result 
-                    text = {this.state.text}/>
-                <Footer/>
-                <div className="dashboard">
-                
-                    {logged &&
-                        <p className="status">Logged In 6</p>
-                    }
-                    <p className="name"> {name}</p>
-                    <p className="email">{email}</p>
-                    <p>API 1host variable {__API_HOST__}</p>
-                </div>
-
+                <h1> {testing}</h1>
+                <Header {...header} />
+                <ContentContainer {...contentContainer} />
+                <Footer {...footer} />
             </Fragment>
         )
     }
 }
 
+const mapStateToProps = state => {
 
+    let props = state;
 
-render(<MyApp/>, document.getElementById('app'));
+    return { props }
+}
+
+export default connect(mapStateToProps)(MyApp)
 

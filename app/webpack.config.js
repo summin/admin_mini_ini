@@ -5,12 +5,10 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-
-
 let config = {
     entry: {
         main: [
-            './_devapp/app.js',
+            './_devapp/index.js',
             './_devapp/css/app.scss',
 
         ]
@@ -22,12 +20,16 @@ let config = {
     },
 
     devServer: {
+
         proxy: {
             '/': {
                 target: DevPath,
+                changeOrigin: true,
                 secure: false
             }
         },
+
+      
     },
 
     resolve: {

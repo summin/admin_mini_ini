@@ -12,7 +12,7 @@ PHP and MySQL enabled server. React.js
 
 ### Configuration
 
-
+for development change .htaccess file inside admin folder to Header set Access-Control-Allow-Origin "*". In production allowing this is forbidden. 
 
 ### Installing
 

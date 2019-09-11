@@ -6,16 +6,57 @@
 body, html {
     padding: 0;
     margin: 0;
+    padding-top: 30px;
+    padding-bottom: 0px;
 }
 
 @import "Header";
 @import "bootstrap/bootstrap";
 
+
+
 .dashboard {
-    padding: 0 40px;
+    padding: 0 0px;
+    word-wrap: break-word;
+}
+
+
+.overflowscroll {
+    height: 84vh;
+    overflow-y: scroll !important;
+}
+
+@media (max-width: 575px){
+    .img {
+        padding: 0 25% 0 25%;
+        }   
+  }
+  
+
+@media (max-width: 1298px) {
+    .btn-responsive {
+      padding:1px 2px;
+      font-size: 100%;
+      line-height: 2
+    }
+  }
+
+@media (min-width: 1298px) and (max-width: 1670px) {
+    .btn-responsive {
+      padding:1px 11px;
+      font-size: 90%;
+      line-height: 2;
+    }
+  }
+
+.first-caps {
+    text-transform: capitalize;
 }
 
 .status {
     color: red;
 }
 
+.word-wrap {
+word-wrap: break-word;
+}
