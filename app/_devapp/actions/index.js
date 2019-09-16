@@ -1,59 +1,80 @@
-import { fromJS } from 'immutable';
+export const HEADER_ASSETS_REQUEST = 'HEADER_ASSETS_REQUEST'
+export const CONTENT_REQUEST = 'CONTENT_REQUEST'
+export const CONTENT_FOCUS = 'CONTENT_FOCUS'
+export const CONTENT_PUSH_FORM_VALUE = "CONTENT_PUSH_FORM_VALUE"
+export const FORM_CONTENT = 'FORM_CONTENT'
 
+//////////
+// HEAD //
+//////////
 
-/////////////////////////
-/////               /////
-/////    ORIGINAL   /////
-/////               /////
-/////////////////////////
-
-export const REQUEST_POSTS = 'REQUEST_POSTS'
-export const RECEIVE_POSTS = 'RECEIVE_POSTS'
-export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
-export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT'
-
-export const selectSubreddit = subreddit => ({
-  type: SELECT_SUBREDDIT,
-  subreddit
-})
-
-export const invalidateSubreddit = subreddit => ({
-  type: INVALIDATE_SUBREDDIT,
-  subreddit
-})
-
-export const requestPosts = subreddit => ({
-  type: REQUEST_POSTS,
-  subreddit
-})
-
-export const receivePosts = (subreddit, json) => ({
-  type: RECEIVE_POSTS,
-  subreddit,
-  posts: json.data.children.map(child => child.data),
-  receivedAt: Date.now()
-})
-
-const fetchPosts = subreddit => dispatch => {
-  dispatch(requestPosts(subreddit))
-  return fetch(`https://www.reddit.com/r/${subreddit}.json`)
-    .then(response => response.json())
-    .then(json => dispatch(receivePosts(subreddit, json)))
+export const getAssets = (json) => {
+    return {
+        type: HEADER_ASSETS_REQUEST,
+        assets: Object.keys(json)
+    }
 }
 
-const shouldFetchPosts = (state, subreddit) => {
-  const posts = state.postsBySubreddit[subreddit]
-  if (!posts) {
-    return true
-  }
-  if (posts.isFetching) {
-    return false
-  }
-  return posts.didInvalidate
+const fetchAssetsAPI = () => dispatch => {
+    return fetch(API_URL_ASSETS)
+        .then((response) => response.json())
+        .then((json) => dispatch(getAssets(json)));
 }
 
-export const fetchPostsIfNeeded = subreddit => (dispatch, getState) => {
-  if (shouldFetchPosts(getState(), subreddit)) {
-    return dispatch(fetchPosts(subreddit))
-  }
+export const fetchAssets = () => dispatch => {
+    return dispatch(fetchAssetsAPI())
 }
+
+//////////
+// CONT //
+//////////
+
+export const getContentFocus = (focus) => {
+    return {
+        type: CONTENT_FOCUS,
+        focus: focus.target.attributes.value.value,
+    }
+}
+
+export const getContent = (json, asset) => {
+    return {
+        type: CONTENT_REQUEST,
+        content: json,
+        contentLoaded: asset
+    }
+}
+
+const fetchContentAPI = (asset) => dispatch => {
+    return fetch(API_URL_CONTENT + "?asset=" + asset)
+        .then((response) => response.json())
+        .then((json) => dispatch(getContent(json, asset)));
+}
+
+export const fetchContent = (e) => dispatch => {
+    return dispatch(fetchContentAPI(e.target.attributes.value.value))
+}
+
+////////////////////
+// CONT_DATA_FORM //
+////////////////////
+
+export const setFormContent = (entries, focus) => {
+    return {
+        type: FORM_CONTENT,
+        content: entries,
+        focus: focus
+    }
+}
+
+export const pushFormValue = (key, value, section) => {
+    return {
+        type: CONTENT_PUSH_FORM_VALUE,
+        key: key,
+        value: value.target.value,
+        section: section
+    }
+}
+
+//////////
+// FOOT //
+//////////

@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
+import { connect } from 'react-redux'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
 import Textarea from 'react-textarea-autosize'
 import cuid from 'cuid'
+import {pushFormValue} from '../../actions'
 
 const textStyle = {
     width: "100%",
@@ -19,11 +21,13 @@ const labelStyle = {
     'overflowY': 'visible'
 }
 
-export default class FormGroup extends Component {
+class FormGroup extends PureComponent {
 
     constructor(props) {
         super(props);
     }
+
+    
 
     render() {
         let entries = this.props.entries;
@@ -44,7 +48,7 @@ export default class FormGroup extends Component {
                             <Textarea
                                 key={cuid()}
                                 className="transitionForm"
-                                onChange={this.props.onChange}
+                                onChange={(e) => this.props.dispatch(pushFormValue(j[0], e, this.props.focus))}
                                 defaultValue={j[1]}
                                 style={textStyle}
                                 inputRef={tag => (this.textarea = tag)}
@@ -56,3 +60,11 @@ export default class FormGroup extends Component {
         return formGroup;
     }
 }
+
+const mapStateToProps = state => {
+    const entries = state.content.formGroupContent
+    const focus = state.content.formFocus
+    return { entries, focus }
+}
+
+export default connect(mapStateToProps)(FormGroup)

@@ -4,7 +4,6 @@ import cuid from 'cuid'
 import Spinner from 'react-bootstrap/Spinner'
 
 export default ({...props}) => {
-    console.log("BUTTONS LEFT RENDERED");
     let array = [];
     if (props.content)
         array.push(

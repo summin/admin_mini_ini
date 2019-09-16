@@ -1,13 +1,12 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Button from 'react-bootstrap/Button'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import cuid from 'cuid'
+import {getContentFocus} from '../../actions'
 
 
-export default ({ ...props }) => {
-
-    console.log("BUTTONS RENDERED");
-    console.log(props);
+const buttons = ({ ...props }) => {
 
     let group = [];
     let sections = [];
@@ -25,12 +24,12 @@ export default ({ ...props }) => {
             for (i = 1; i < r; ++i) {
                 (props.contentLoaded == "days") ? label = (i + n) : label = sections[n];
 
-                ///////// promo in days.ini fix
+                // promo in days.ini fix //
                 if (props.contentLoaded == "days" && n == 24) {
                     label = sections[0];
                     r = 1;
                 }
-                ////////////////////////////////
+                //
 
                 buttons.push(
                     <Button
@@ -39,7 +38,8 @@ export default ({ ...props }) => {
                         size="lg"
                         variant="light"
                         block
-                        onClick={props.onClick}>
+                        value={label}
+                        onClick={(e) => props.dispatch(getContentFocus(e, props.content, props.contentLoaded))}>
                         {label}
                     </Button>)
             }
@@ -61,3 +61,5 @@ export default ({ ...props }) => {
 
     return group;
 }
+
+export default connect()(buttons)
