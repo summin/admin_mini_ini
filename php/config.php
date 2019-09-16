@@ -9,6 +9,7 @@ $admin_url = $rel_path_prefix . "admin/app/";
 $dev_url = "http://localhost:8080/";
 $api_url_assets = $rel_path_prefix .'admin/php/assets.php';
 $api_url_content = $rel_path_prefix .'admin/php/content.php';
+$api_url_save = $rel_path_prefix . 'admin/php/save_data.php';
 $api_url_prize_images = $rel_path_prefix . 'dist/assets/images/prize-images-ch/';
 $api_url_dafault_image = $rel_path_prefix . '/dist/assets/images/left_dummy.jpg';
 

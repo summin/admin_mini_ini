@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button'
 import navlogo from '../../../../dist/assets/images/logo-horizontal.png';
 import Clock from './Clock';
 import cuid from 'cuid'
-import { fetchAssets, fetchContent } from '../actions'
+import { fetchAssets, fetchContent, saveContent } from '../actions'
 
 const navStyle = {
     backgroundColor: '#e3f2fd',
@@ -52,7 +52,7 @@ class Header extends Component {
                         key={cuid()}
                         className="ml-auto mr-2"
                         variant="success"
-                        onClick={this.onClickDeploy}>
+                        onClick={() => this.props.dispatch(saveContent())}>
                         Deploy
                     </Button>
                     <Navbar.Brand className="text-monospace"><Clock /></Navbar.Brand>

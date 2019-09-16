@@ -29,10 +29,12 @@ class FormGroup extends PureComponent {
         entries.map((j) => {
             if (j[0]) {
                 const isDays = this.props.contentLoaded == 'days'
+                const instantPatch = (this.props.contentLoaded == "config") && (this.props.focus == "instant")
                 let keyAPI = isDays ? this.props.focus + "." + j[0] : j[0];
                 let sectionAPI = isDays ? "calendar.days" : this.props.focus
 
                 formGroup.push(
+                    instantPatch ? "Sorry, this section can be edited by admins or developers only on the backend side. Please, contact your local product service." : (
                     <Form.Group key={cuid()} as={Row}>
                         <Form.Label
                             key={cuid()}
@@ -52,7 +54,7 @@ class FormGroup extends PureComponent {
                                 inputRef={tag => (this.textarea = tag)}
                                 id={j[0]} />
                         </Col>
-                    </Form.Group>);
+                    </Form.Group>));
             }
         })
         return formGroup;

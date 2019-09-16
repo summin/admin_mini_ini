@@ -16,6 +16,7 @@ require __DIR__ . '/php/config.php';
         var STATIC_PARENT_URL = "<?php $rel_path_prefix; ?>";
         var API_URL_ASSETS = "<?php echo $api_url_assets; ?>";
         var API_URL_CONTENT = "<?php echo $api_url_content; ?>";
+        var API_URL_SAVE = "<?php echo $api_url_save; ?>";
         var API_URL_PRIZE_IMAGES = "<?php echo $api_url_prize_images; ?>";
         var API_URL_DEFAULT_IMAGE = "<?php echo $api_url_dafault_image; ?>";
         var myApp = {
