@@ -23,17 +23,15 @@ const labelStyle = {
 
 class FormGroup extends PureComponent {
 
-    constructor(props) {
-        super(props);
-    }
-
-    
-
     render() {
         let entries = this.props.entries;
         let formGroup = [];
         entries.map((j) => {
             if (j[0]) {
+                const isDays = this.props.contentLoaded == 'days'
+                let keyAPI = isDays ? this.props.focus + "." + j[0] : j[0];
+                let sectionAPI = isDays ? "calendar.days" : this.props.focus
+
                 formGroup.push(
                     <Form.Group key={cuid()} as={Row}>
                         <Form.Label
@@ -48,7 +46,7 @@ class FormGroup extends PureComponent {
                             <Textarea
                                 key={cuid()}
                                 className="transitionForm"
-                                onChange={(e) => this.props.dispatch(pushFormValue(j[0], e, this.props.focus))}
+                                onChange={(e) => this.props.dispatch(pushFormValue(keyAPI, e, sectionAPI))}
                                 defaultValue={j[1]}
                                 style={textStyle}
                                 inputRef={tag => (this.textarea = tag)}

@@ -90,13 +90,8 @@ class ContentForm extends Component {
                     <Col md={6} key={cuid()}>
                         <Alert key={cuid()} variant="primary" style={alertStyle}>section: <strong>{focus}</strong> </Alert>
                     </Col>
-                    <Col md={4} key={cuid()}>
+                    <Col md={6} key={cuid()}>
                         <Alert key={cuid()} variant="secondary" style={alertStyle}>loaded: <strong>{contentLoaded}.ini</strong></Alert>
-                    </Col>
-                    <Col md={2} key={cuid()}>
-                        <div className="d-flex">
-                            <Button type="submit" key={cuid()} style={buttonStyle} size="lg" variant="secondary" onClick={this.onClick} block>Save</Button>
-                        </div>
                     </Col>
                 </Row>);
 
