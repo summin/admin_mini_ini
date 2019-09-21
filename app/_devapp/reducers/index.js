@@ -23,12 +23,14 @@ const header = (state = {}, action) => {
 
 const content = (state = {}, action) => {
     switch (action.type) {
-
         case CONTENT_REQUEST:
             return {
                 ...state,
                 content: action.content,
-                contentLoaded: action.contentLoaded
+                contentLoaded: action.contentLoaded,
+                focus:"",
+                formFocus:"",
+                formGroupContent: ""
             }
 
         case CONTENT_FOCUS:

@@ -86,11 +86,15 @@ const saveContentSuccess = () => {
 }
 
 const saveContentAPI = () => dispatch => {
-    console.log(JSON.stringify(store.getState().content.content))
-    return fetch(API_URL_SAVE + "?" + JSON.stringify(store.getState().content.content), {
+    console.log(JSON.stringify(store.getState().content.focus))
+    return fetch(API_URL_SAVE +
+        "?data=" +
+        encodeURIComponent(
+            JSON.stringify(
+                store.getState().content.content[store.getState().content.focus])), {
         })
-        .then((response) =>  response.text())
-        .then((response) => {console.log(response)});
+        .then((response) => response.text())
+        .then((response) => { console.log(response) });
 }
 
 

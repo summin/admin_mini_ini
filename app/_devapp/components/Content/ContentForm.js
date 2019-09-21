@@ -23,29 +23,28 @@ class ContentForm extends Component {
         this.hasError = false
     }
 
-    setContentFormData = (value, json, contentLoaded) => {
+    setContentFormData = (focus, json, contentLoaded) => {
         let entries = Object.entries(json);
         entries.map((i) => {
             if (contentLoaded == 'days') {
-                entries = this.filterbyFirst(i[1], value);
+                entries = this.filterbyFirst(i[1], focus);
             }
-            else if
-                (i[0] === value) {
-                entries = Object.entries(i[1]);
+            else if (i[0] === focus) {
+                entries = this.addAPIKeyReference(i[1]);
             }
         });
 
         // promo in days.ini fix //
-        if (value === "calendar.newsletter") {
+        if (focus === "calendar.newsletter") {
             entries = Object.entries(json);
             entries.map((i) => {
-                if (i[0] === value) {
+                if (i[0] === focus) {
                     entries = Object.entries(i[1]);
                 }
             })
         }
-
-        this.props.dispatch(setFormContent(entries, value))
+        //
+        this.props.dispatch(setFormContent(entries, focus))
         
         return entries;
     }
@@ -55,10 +54,21 @@ class ContentForm extends Component {
         Object.entries(pairs).map((i) => {
             let j = (i[0].split("."));
             if (j[0] == n) {
+                i[2] = i[0];
                 i[0] = j.splice(1, 4).join(".");
                 array.push(i);
             }
         })
+        return array;
+    }
+
+    addAPIKeyReference = (pairs, n) => {
+        let array = [[], []];
+        Object.entries(pairs).map((i) => {
+                i[2] = i[0];
+                array.push(i);
+            }
+        )
         return array;
     }
 
@@ -90,8 +100,13 @@ class ContentForm extends Component {
                     <Col md={6} key={cuid()}>
                         <Alert key={cuid()} variant="primary" style={alertStyle}>section: <strong>{focus}</strong> </Alert>
                     </Col>
-                    <Col md={6} key={cuid()}>
+                    <Col md={4} key={cuid()}>
                         <Alert key={cuid()} variant="secondary" style={alertStyle}>loaded: <strong>{contentLoaded}.ini</strong></Alert>
+                    </Col>
+                    <Col md={2} key={cuid()}>
+                        <div className="d-flex">
+                            <Button type="submit" key={cuid()} style={buttonStyle} size="lg" variant="secondary" onClick={this.onClick} block>Save</Button>
+                        </div>
                     </Col>
                 </Row>);
 

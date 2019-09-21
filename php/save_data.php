@@ -1,9 +1,8 @@
 <?php
 
-$returnedINI = $_POST;
-echo $_POST[4];
-// echo $returnedINI . "<p>post</p><br>"; 
-
+$returnedINI = json_decode($_GET['data'], true);
+echo $returnedINI . "<p>post</p><br>"; 
+print_r(json_decode($_GET['data'], true));
 
 function write_php_ini($array, $file)
 {
@@ -17,7 +16,7 @@ function write_php_ini($array, $file)
         }
         else $res[] = "$key = ".(is_numeric($val) ? $val : '"'.$val.'"');
     }
-    safefilerewrite($file, $returnedINI);
+    safefilerewrite($file, implode("\r\n", $res));
 }
 
 

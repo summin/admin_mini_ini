@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
 import Textarea from 'react-textarea-autosize'
 import cuid from 'cuid'
-import {pushFormValue} from '../../actions'
+import { pushFormValue } from '../../actions'
 
 const textStyle = {
     width: "100%",
@@ -30,7 +30,6 @@ class FormGroup extends PureComponent {
             if (j[0]) {
                 const isDays = this.props.contentLoaded == 'days'
                 const instantPatch = (this.props.contentLoaded == "config") && (this.props.focus == "instant")
-                let keyAPI = isDays ? this.props.focus + "." + j[0] : j[0];
                 let sectionAPI = isDays ? "calendar.days" : this.props.focus
 
                 formGroup.push(
@@ -39,7 +38,7 @@ class FormGroup extends PureComponent {
                         <Form.Label
                             key={cuid()}
                             className="mr-auto word-wrap"
-                            value={j[0]}
+                            value={j[2]}
                             style={labelStyle}
                             column lg={3}>
                             {j[0]}
@@ -48,7 +47,7 @@ class FormGroup extends PureComponent {
                             <Textarea
                                 key={cuid()}
                                 className="transitionForm"
-                                onChange={(e) => this.props.dispatch(pushFormValue(keyAPI, e, sectionAPI))}
+                                onChange={(e) => this.props.dispatch(pushFormValue(j[2], e, sectionAPI))}
                                 defaultValue={j[1]}
                                 style={textStyle}
                                 inputRef={tag => (this.textarea = tag)}
