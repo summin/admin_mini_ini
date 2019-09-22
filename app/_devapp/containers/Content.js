@@ -14,18 +14,21 @@ class Content extends Component {
         return (
             <Container fluid={true}>
                 <Row>
-                    <ContentViewLeft
-                        contentLoaded={this.props.contentLoaded}
-                        content={this.props.content}
-                        focus={this.props.focus} />
+
+                    {this.props.content &&
+                        <ContentViewLeft
+                            contentLoaded={this.props.contentLoaded}
+                            content={this.props.content}
+                            focus={this.props.focus} />}
                     <ContentViewCenter
                         contentLoaded={this.props.contentLoaded}
                         content={this.props.content}
-                        focus={this.props.focus}/>
-                    <ContentViewRight
-                        contentLoaded={this.props.contentLoaded}
-                        content={this.props.content}
                         focus={this.props.focus} />
+                    {this.props.content &&
+                        <ContentViewRight
+                            contentLoaded={this.props.contentLoaded}
+                            content={this.props.content}
+                            focus={this.props.focus} />}
                 </Row>
             </Container>
         )

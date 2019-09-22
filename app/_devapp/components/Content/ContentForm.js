@@ -84,7 +84,7 @@ class ContentForm extends Component {
         let contentLoaded = this.props.contentLoaded;
         let content = [];
         if (!contentLoaded) {
-            content.push(<h5 key={cuid()}>Welcome to ini editor!</h5>);
+            content.push(<br></br>, <h5 key={cuid()}>Welcome to ini editor!</h5>);
             content.push(<p key={cuid()}>This interface is here help you to work with your ini files without the need for external text editor and ftp client. <br></br> Please, select the ini file name from the Assets dropdown in the top navbar.<br></br><br></br>Once you have edited ini entries, press Save to save the changes in the current session.<br></br>
                 Press Deploy to apply the changes to the server ini files.
             </p>)
