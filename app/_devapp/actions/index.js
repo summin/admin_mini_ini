@@ -85,24 +85,37 @@ const saveContentSuccess = () => {
     }
 }
 
-const saveContentAPI = () => dispatch => {
-    console.log(JSON.stringify(store.getState().content.focus))
-    return fetch(API_URL_SAVE +
-        "?data=" +
-        encodeURIComponent(
-            JSON.stringify(
-                store.getState().content.content[store.getState().content.focus])), {
-        })
+const saveContentAPI = (data_API) => dispatch => {
+    const isDays = store.getState().content.content['calendar.days'] && true
+    return fetch(API_URL_SAVE + 
+        "?data=" + data_API + 
+        "&asset=" + store.getState().content.contentLoaded +
+        "&section=" + (isDays ? "calendar.days": store.getState().content.focus))
         .then((response) => response.text())
         .then((response) => { console.log(response) });
 }
 
-
 export const saveContent = () => dispatch => {
-    return dispatch(saveContentAPI())
+    let data_API = [];
+    if (store.getState().content.contentLoaded == "days") {
+        data_API = {
+            ['calendar.days']: {}
+        }
+        store.getState().content.formGroupContent.map((x) => {
+            store.getState().content.content['calendar.days'][x[2]] &&
+                (data_API['calendar.days'][x[2]] = store.getState().content.content['calendar.days'][x[2]])
+        }
+        )
+        data_API = JSON.stringify(data_API);
+    }
+    else
+        data_API = JSON.stringify(store.getState().content.content[store.getState().content.focus])
+
+    return dispatch(saveContentAPI(encodeURIComponent(data_API)))
 }
 
 
 //////////
 // FOOT //
 //////////
+

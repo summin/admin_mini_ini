@@ -1,0 +1,3 @@
+<files *.ini>
+  Require all denied
+</files>

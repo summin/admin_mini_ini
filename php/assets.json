@@ -1,15 +1,15 @@
 {
-    "days": "config/pub/calendar/days.ini",
-    "overlay" : "config/pub/calendar/overlay.ini",
-    "rows" : "config/pub/calendar/rows.ini",
-    "teasers" : "config/pub/calendar/teasers.ini",
-    "calendar" : "config/pub/calendar.ini",
-    "config" : "config/pub/config.ini",
-    "content" : "config/pub/content.ini",
-    "countdown" : "config/pub/countdown.ini",
-    "header" : "config/pub/header.ini",
-    "reminder" : "config/pub/reminder.ini",
-    "seo" : "config/pub/seo.ini",
-    "thanks" : "config/pub/thanks.ini"
+    "days": "admin/php/config/pub/calendar/days.ini",
+    "overlay" : "admin/php/config/pub/calendar/overlay.ini",
+    "rows" : "admin/php/config/pub/calendar/rows.ini",
+    "teasers" : "admin/php/config/pub/calendar/teasers.ini",
+    "calendar" : "admin/php/config/pub/calendar.ini",
+    "config" : "admin/php/config/pub/config.ini",
+    "content" : "admin/php/config/pub/content.ini",
+    "countdown" : "admin/php/config/pub/countdown.ini",
+    "header" : "admin/php/config/pub/header.ini",
+    "reminder" : "admin/php/config/pub/reminder.ini",
+    "seo" : "admin/php/config/pub/seo.ini",
+    "thanks" : "admin/php/config/pub/thanks.ini"
         
 }

@@ -1,10 +1,26 @@
 <?php
 
-$returnedINI = json_decode($_GET['data'], true);
-echo $returnedINI . "<p>post</p><br>"; 
-print_r(json_decode($_GET['data'], true));
 
-function write_php_ini($array, $file)
+$asset = $_GET['asset'];
+$section = $_GET['section'];
+$data_assets = file_get_contents(__DIR__ . '/assets.json');
+$data_location = '../../'. json_decode($data_assets)->$asset;
+$data_received = json_decode($_GET['data'], true);
+$data_opened = parse_ini_file($data_location, true);
+
+
+
+
+function process_ini($source, $input, $section, $data_location)
+{   
+    foreach($input as $key => $val)
+    {
+        $source[$section][$key] = $val;
+    }
+    write_php_ini($source, $data_location);
+}
+
+function write_php_ini($array, $data_location)
 {
     $res = array();
     foreach($array as $key => $val)
@@ -12,13 +28,14 @@ function write_php_ini($array, $file)
         if(is_array($val))
         {
             $res[] = "[$key]";
-            foreach($val as $skey => $sval) $res[] = "$skey = ".(is_numeric($sval) ? $sval : '"'.$sval.'"');
+            foreach($val as $skey => $sval) $res[] = "$skey = ". "'".$sval."'";
         }
-        else $res[] = "$key = ".(is_numeric($val) ? $val : '"'.$val.'"');
+        else $res[] = "$key = ".(is_numeric($val) ? $val : "'".$sval."'");
+        $res[] = "\r\n";   
     }
-    safefilerewrite($file, implode("\r\n", $res));
+    
+    safefilerewrite($data_location, implode("\r\n", $res));
 }
-
 
 function safefilerewrite($fileName, $dataToSave)
 {    if ($fp = fopen($fileName, 'w'))
@@ -40,6 +57,6 @@ function safefilerewrite($fileName, $dataToSave)
 
 }
 
-write_php_ini($returnedINI, "saved.ini");
+    process_ini($data_opened, $data_received, $section, $data_location);
 
 ?>
