@@ -1,6 +1,5 @@
 <?php
 
-
 $asset = $_GET['asset'];
 $section = $_GET['section'];
 $data_assets = file_get_contents(__DIR__ . '/assets.json');
@@ -8,8 +7,7 @@ $data_location = '../../'. json_decode($data_assets)->$asset;
 $data_received = json_decode($_GET['data'], true);
 $data_opened = parse_ini_file($data_location, true);
 
-
-
+print_r($data_received);
 
 function process_ini($source, $input, $section, $data_location)
 {   

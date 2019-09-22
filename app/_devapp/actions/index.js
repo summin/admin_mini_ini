@@ -98,12 +98,10 @@ const saveContentAPI = (data_API) => dispatch => {
 export const saveContent = () => dispatch => {
     let data_API = [];
     if (store.getState().content.contentLoaded == "days") {
-        data_API = {
-            ['calendar.days']: {}
-        }
+        data_API = {};
         store.getState().content.formGroupContent.map((x) => {
             store.getState().content.content['calendar.days'][x[2]] &&
-                (data_API['calendar.days'][x[2]] = store.getState().content.content['calendar.days'][x[2]])
+                (data_API[x[2]] = store.getState().content.content['calendar.days'][x[2]])
         }
         )
         data_API = JSON.stringify(data_API);
