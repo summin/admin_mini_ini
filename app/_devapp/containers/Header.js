@@ -4,7 +4,8 @@ import { headerAssets } from '../actions'
 
 const mapStateToProps = state => {
     const assets_names = state.header.header_assets_names
-    return { assets_names }
+    const focus = state.content.focus
+    return { assets_names, focus }
 }
 
 

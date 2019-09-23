@@ -13,7 +13,7 @@ export default class Footer extends Component {
     render() {
         return ( 
             <Nav style={navStyle} className="header fixed-bottom">
-                <h7 className="text-monospace  mw-4 mr-auto ml-auto">{this.props.loaded}.ini Loaded</h7>
+                <h6 className="text-monospace  mw-4 mr-auto ml-auto">{this.props.loaded}.ini Loaded</h6>
             </Nav>
         )
     }

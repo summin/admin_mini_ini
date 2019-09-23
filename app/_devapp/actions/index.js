@@ -92,7 +92,7 @@ const saveContentAPI = (data_API) => dispatch => {
         "&asset=" + store.getState().content.contentLoaded +
         "&section=" + (isDays ? "calendar.days": store.getState().content.focus))
         .then((response) => response.text())
-        .then((response) => { console.log(response) });
+        .then((response) => { console.log("Data from section Saved") });
 }
 
 export const saveContent = () => dispatch => {
@@ -111,7 +111,6 @@ export const saveContent = () => dispatch => {
 
     return dispatch(saveContentAPI(encodeURIComponent(data_API)))
 }
-
 
 //////////
 // FOOT //

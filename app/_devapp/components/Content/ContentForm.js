@@ -33,17 +33,7 @@ class ContentForm extends Component {
                 entries = this.addAPIKeyReference(i[1]);
             }
         });
-
-        // promo in days.ini fix //
-        if (focus === "calendar.newsletter") {
-            entries = Object.entries(json);
-            entries.map((i) => {
-                if (i[0] === focus) {
-                    entries = Object.entries(i[1]);
-                }
-            })
-        }
-        //
+        
         this.props.dispatch(setFormContent(entries, focus))
         
         return entries;
@@ -84,9 +74,10 @@ class ContentForm extends Component {
         let contentLoaded = this.props.contentLoaded;
         let content = [];
         if (!contentLoaded) {
-            content.push(<br></br>, <h5 key={cuid()}>Welcome to ini editor!</h5>);
-            content.push(<p key={cuid()}>This interface is here help you to work with your ini files without the need for external text editor and ftp client. <br></br> Please, select the ini file name from the Assets dropdown in the top navbar.<br></br><br></br>Once you have edited ini entries, press Save to save the changes in the current session.<br></br>
+            content.push(<br key={cuid()}></br>, <h5 key={cuid()}>Welcome to ini editor!</h5>);
+            content.push(<p key={cuid()}>This interface is here help you to work with your ini files without the need for external text editor and ftp client. <br key={cuid()}></br> Please, select the ini file name from the Assets dropdown in the top navbar.<br key={cuid()}></br><br key={cuid()}></br>
                 Press Deploy to apply the changes to the server ini files.
+                Auto-deployment is activated to deploy changes to server automatically every 30 seconds.
             </p>)
         }
         else if (!focus) {
@@ -106,7 +97,7 @@ class ContentForm extends Component {
                 </Row>);
 
             content.push(
-                <Col className="overflowscroll" >
+                <Col className="overflowscroll" key="1">
                     <FormGroup
                         contentLoaded={this.props.contentLoaded} />
                 </Col>);

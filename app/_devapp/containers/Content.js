@@ -12,23 +12,25 @@ class Content extends Component {
 
     render() {
         return (
-            <Container fluid={true}>
-                <Row>
-
+            <Container fluid={true} key="1">
+                <Row key="1">
                     {this.props.content &&
                         <ContentViewLeft
                             contentLoaded={this.props.contentLoaded}
                             content={this.props.content}
-                            focus={this.props.focus} />}
+                            focus={this.props.focus}
+                            key="1" />}
                     <ContentViewCenter
                         contentLoaded={this.props.contentLoaded}
                         content={this.props.content}
-                        focus={this.props.focus} />
+                        focus={this.props.focus}
+                        key="2" />
                     {this.props.content &&
                         <ContentViewRight
                             contentLoaded={this.props.contentLoaded}
                             content={this.props.content}
-                            focus={this.props.focus} />}
+                            focus={this.props.focus}
+                            key="3" />}
                 </Row>
             </Container>
         )

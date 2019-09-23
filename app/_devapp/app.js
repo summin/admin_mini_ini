@@ -12,7 +12,6 @@ class MyApp extends Component {
             <Fragment>
                 <Header />
                 <Content />
-                <Footer />
             </Fragment>
         )
     }

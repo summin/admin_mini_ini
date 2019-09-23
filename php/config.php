@@ -4,7 +4,7 @@
 // ENVIRONMENT VARIABLES //
 ///////////////////////////
 
-$rel_path_prefix = "http://localhost/AC19/";
+$rel_path_prefix = $config_env_path;
 $admin_url = $rel_path_prefix . "admin/app/";
 $dev_url = "http://localhost:8080/";
 $api_url_assets = $rel_path_prefix .'admin/php/assets.php';
@@ -29,12 +29,5 @@ $user = (object) [
 $DB_name = '';
 $DB_user = '';
 $DB_pwd = '';
-
-
-/////////////////////////
-// FUNCTIONAL ELEMENTS //
-/////////////////////////
-
-
 
 ?>

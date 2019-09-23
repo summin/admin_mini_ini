@@ -13,13 +13,19 @@ body, html {
 @import "Header";
 @import "bootstrap/bootstrap";
 
-
-
 .dashboard {
     padding: 0 0px;
     word-wrap: break-word;
 }
 
+.smallFont {
+    font-size: 0.7em !important;
+    word-wrap: break-word;
+}
+
+.navbar {
+    justify-content: flex-end !important;
+}
 
 .overflowscroll {
     height: 84vh;
@@ -28,7 +34,7 @@ body, html {
 
 @media (max-width: 575px){
     .img {
-        padding: 0 25% 0 25%;
+        padding: 10px 25% 0 25%;
         }   
   }
   

@@ -10,7 +10,7 @@ export default (...props) => {
         srcPath = API_URL_DEFAULT_IMAGE;
     if (props[0].contentLoadedinParent === 'days')
         array.push(
-            <div key={cuid()}>
+            <div className="imgCustom" key={cuid()}>
                 <Image key={cuid()} className="img mt-lg-4" fluid src={srcPath} />
             </div>);
     else array.push("")

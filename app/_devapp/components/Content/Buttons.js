@@ -24,13 +24,6 @@ const buttons = ({ ...props }) => {
             for (i = 1; i < r; ++i) {
                 (props.contentLoaded == "days") ? label = (i + n) : label = sections[n];
 
-                // promo in days.ini fix //
-                if (props.contentLoaded == "days" && n == 24) {
-                    label = sections[0];
-                    r = 1;
-                }
-                //
-
                 buttons.push(
                     <Button
                         key={cuid()}
@@ -49,7 +42,7 @@ const buttons = ({ ...props }) => {
     }
 
     let i, r, modulo;
-    props.contentLoaded == "days" ? (r = 25) && (modulo = 6) : (r = sections.length) && (modulo = 1);
+    props.contentLoaded == "days" ? (r = 24) && (modulo = 6) : (r = sections.length) && (modulo = 1);
     for (i = 0; i < r; ++i)
         if (i % modulo == 0) {
             group.push(

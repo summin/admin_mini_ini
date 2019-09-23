@@ -31,13 +31,12 @@ class Header extends Component {
                 expand="sm"
                 className="header fixed-top"
                 style={navStyle}>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Brand href="#home">
                     <b.Image
                         src={navlogo}
                         style={navlogoStyle} />
                 </Navbar.Brand>
-                <Navbar.Collapse id="basic-navbar-nav">
+
                     <NavDropdown className="mr-auto" title="Assets">
                         {this.props.assets_names && this.props.assets_names.map((i) =>
                             <NavDropdown.Item
@@ -56,20 +55,7 @@ class Header extends Component {
                         Deploy
                     </Button>
                     <Navbar.Brand className="text-monospace"><Clock /></Navbar.Brand>
-                    <NavDropdown title="Account" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#">Account</NavDropdown.Item>
-                        <NavDropdown.Item href="#">View</NavDropdown.Item>
-                        <NavDropdown.Item href="#">User</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#">App View Settings</NavDropdown.Item>
-                    </NavDropdown>
-                    <Form inline className="">
-                        <FormControl
-                            type="text"
-                            placeholder="Search"
-                            className="mr-sm-2" />
-                    </Form>
-                </Navbar.Collapse>
+
             </Navbar>
         )
     }

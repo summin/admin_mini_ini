@@ -28,8 +28,6 @@ let config = {
                 secure: false
             }
         },
-
-      
     },
 
     resolve: {
@@ -75,7 +73,7 @@ let config = {
                     {
                         loader: 'file-loader',
                         options: {
-                            name: '../css/[hash].[ext]'
+                            name: path.join('[hash].[ext]')
                         }
                     }
                 ]
@@ -90,7 +88,7 @@ let config = {
         myApp: 'myApp',
     },
     plugins: [
-        new ExtractTextPlugin(path.join('..', 'css', 'app.css')),
+        new ExtractTextPlugin(path.join('css', 'app.css')),
         new webpack.DefinePlugin({
             '__DEV__': JSON.stringify(true),
             '__API_HOST__': JSON.stringify('http://localhost/my-app/'),
